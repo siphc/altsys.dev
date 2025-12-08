@@ -2,7 +2,7 @@
 title = "What The Heck is an Arena?"
 date = "2025-12-07"
 author = "William Pan"
-tags = ["c"]
+tags = ["c", "memory-management"]
 description = "Imagine this scenario. You are developing an AST builder for your new shiny compiler; at some point in the program, you come up with this schema for dealing with floating point arithmetic..."
 +++
 
@@ -52,6 +52,8 @@ static Node *make_var(const char *name, size_t len) {
 ```
 
 (We'll ignore the parser of the program, since it's quite verbose and doesn't actually do anything interesting.)
+
+---
 
 ### The Problem
 
