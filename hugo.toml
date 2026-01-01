@@ -9,6 +9,17 @@ pagination.pagerSize = 5
   [caches.images]
     dir = ':cacheDir/images'
 
+# Enable mathematical rendering
+[markup]
+  [markup.goldmark]
+    renderer.unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$']]
+          inline = [['$', '$']]
+
 # Required for Chroma and the custom syntax highlighting.
 [markup.highlight]
   noClasses = false
@@ -66,6 +77,8 @@ pagination.pagerSize = 5
   # dateFormat = "2006-01-02"
   # Example format, with date, time, and timezone abbreviation:
   # dateFormat = "2006-01-02 3:04:06 PM MST"
+
+  math = true
 
 
 [params.twitter]
