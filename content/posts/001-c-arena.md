@@ -1,7 +1,7 @@
 +++
 title = "What The Heck is an Arena?"
 date = "2025-12-07"
-author = "William Pan"
+author = "siphc"
 tags = ["c", "memory-management"]
 description = "Imagine this scenario. You are developing an AST builder for your new shiny compiler; at some point in the program, you come up with this schema for dealing with floating point arithmetic..."
 +++
