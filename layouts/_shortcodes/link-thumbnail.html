@@ -1,0 +1,43 @@
+{{- /* layouts/shortcodes/link-thumbnail.html */ -}}
+{{- $url := .Get "url" | default (.Get 0) -}}
+{{- $caption := .Get "caption" -}}
+{{- $placeholder := "images/placeholder.png" -}}
+{{- $imgSrc := "" -}}
+
+{{- if $url -}}
+  {{- $apiUrl := printf "https://api.microlink.io?url=%s&screenshot=true" ($url | urlquery) -}}
+  {{- with try (resources.GetRemote $apiUrl) -}}
+    {{- with .Err -}}
+      {{- warnf "link-thumbnail: fetch failed for %q: %s" $url . -}}
+    {{- else with .Value -}}
+      {{- $json := .Content | transform.Unmarshal -}}
+      {{- if eq $json.status "success" -}}
+        {{- with $json.data.screenshot -}}
+          {{- $imgSrc = .url -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Fallback to placeholder */ -}}
+{{- if not $imgSrc -}}
+  {{- with resources.Get $placeholder -}}
+    {{- $imgSrc = .RelPermalink -}}
+  {{- else -}}
+    {{- errorf "link-thumbnail: placeholder not found at assets/%s" $placeholder -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $imgSrc -}}
+<figure style="margin: 0 auto; text-align: center;">
+  <a href="{{ $url | safeURL }}" target="_blank" rel="noopener noreferrer">
+    <img src="{{ $imgSrc | safeURL }}" style="max-height: 400px; object-fit: contain;" />
+  </a>
+  {{- with $caption }}
+  <figcaption>
+    <p>{{ . | markdownify }}</p>
+  </figcaption>
+  {{- end }}
+</figure>
+{{- end -}}
