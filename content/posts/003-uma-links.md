@@ -59,7 +59,7 @@ Note that my shortcode uses microlink's screenshot API, so the images might look
 
 {{< link-thumbnail url="https://docs.google.com/document/d/11X2P7pLuh-k9E7PhRiD20nDX22rNWtCpC1S4IMx_8pQ/edit?usp=sharing" caption="Reference Doc" >}}
 
-{{< link-thumbnail url=https://euophrys.github.io/uma-tiers/#/global" caption="Support Card Tier List" >}}
+{{< link-thumbnail url=https://euophrys.github.io/uma-tiers/#/global caption="Support Card Tier List" >}}
 
 ## Spreadsheet Gaming:
 
