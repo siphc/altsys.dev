@@ -3,6 +3,7 @@ title = "\"Performance Tuning\" a Gacha Game for No Reason Whatsoever"
 date = "2026-01-07"
 author = "siphc"
 tags = ["random"]
+draft = true
 description = "Numbers you say?"
 +++
 
